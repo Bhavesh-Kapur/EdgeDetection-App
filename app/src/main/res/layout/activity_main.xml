@@ -19,5 +19,19 @@
         android:id="@+id/glSurfaceView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/fpsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:background="#000000"
+        android:padding="20dp"
+        android:text="FPS: 0"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:visibility="visible" />
 </FrameLayout>
 

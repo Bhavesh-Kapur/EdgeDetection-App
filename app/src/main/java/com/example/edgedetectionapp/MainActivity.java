@@ -46,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     private GLSurfaceView glView;
     private CameraGLRenderer glRenderer;
+    private TextView fpsText;
+    private int frameCount = 0;
+    private long lastTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         glView.setEGLContextClientVersion(2);
         glView.setRenderer(glRenderer);
         glView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY);
+        fpsText = findViewById(R.id.fpsText);
+        lastTime = System.currentTimeMillis();
 
     }
 
@@ -103,13 +108,20 @@ public class MainActivity extends AppCompatActivity {
             processFrameNative(mat.getNativeObjAddr());
             Bitmap resultBitmap = Bitmap.createBitmap(mat.cols(), mat.rows(), Bitmap.Config.ARGB_8888);
             Utils.matToBitmap(mat, resultBitmap);
-
-//            glRenderer.updateBitmap(resultBitmap);
-//            glView.requestRender();
             runOnUiThread(() -> {
                 glRenderer.updateBitmap(resultBitmap);
                 glView.queueEvent(() -> glView.requestRender());
             });
+
+            frameCount++;
+            long currentTime = System.currentTimeMillis();
+            if (currentTime - lastTime >= 1000) {
+                final int fps = frameCount;
+                frameCount = 0;
+                lastTime = currentTime;
+
+                runOnUiThread(() -> fpsText.setText("FPS: " + fps));
+            }
         }
     };
 
