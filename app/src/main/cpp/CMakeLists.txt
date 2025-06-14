@@ -46,13 +46,9 @@ set(OpenCV_DIR /Users/bhavesh/Desktop/OpenCV-android-sdk/sdk/native/jni)
 
 find_package(OpenCV REQUIRED)
 
-add_library( # Sets the name of the library.
+add_library(
         native-lib
-
-        # Sets the library as a shared library.
         SHARED
-
-        # Provides a relative path to your source file(s).
         native-lib.cpp )
 
 target_include_directories(native-lib PRIVATE ${OpenCV_INCLUDE_DIRS})
