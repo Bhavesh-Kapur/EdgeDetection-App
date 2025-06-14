@@ -28,3 +28,22 @@ An android app that uses its integrated camera to detect the edges using openCV 
 
 
 ## Screenshots 
+**Before Edge Detection**
+![App Screenshot](screenshots/ganpati_original.jpg)
+**After Edge Detection**
+![App Screenshot](screenshots/ganpati_edge.jpg)
+
+
+
+
+**Before Edge Detection**
+![App Screenshot](screenshots/bag_original.jpg)
+**After Edge Detection**
+![App Screenshot](screenshots/bag_edge.jpg)
+
+Few More screenshots are present at ```./screenshots```
+
+
+
+## Downloadable App Link
+The apk for the app can be downloaded using this <a href="https://drive.google.com/file/d/16RxlqlsDK_AlvH4zC8YhsDDsv8RvvaD5/view?usp=sharing"> link </a>
