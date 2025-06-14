@@ -23,23 +23,26 @@ An android app that uses its integrated camera to detect the edges using openCV 
 2. The openCV android sdk is already pushed in the repo for easier setup
 3. Open ```CMakeList``` file which can be found at ```app/src/main/cpp/CMakeLists.txt``` of the project directory.
 4. Update the OpenCV_DIR with the correct path in your machine, we need the path to native folder of the sdk will look like this ```OpenCV-android-sdk/sdk/native/jni```
-5. Connect an android device either using USB or over Wifi (make sure the device has USB Debugging and Wireless Debugging. If you don't have a device, Android Studio will create an virtual device.
+5. Connect an android device either using USB or over Wifi (make sure the device has USB Debugging and Wireless Debugging. If you don't have a device, Android Studio will create an virtual device).
 6. Run the project by clicking the Green Play button that builds the project and starts the app on the device.
 
 
 ## Screenshots 
-**Before Edge Detection**
-![App Screenshot](screenshots/ganpati_original.jpg)
-**After Edge Detection**
-![App Screenshot](screenshots/ganpati_edge.jpg)
+**Before Edge Detection**   
+<img src="screenshots/ganpati_original.jpg" alt="Output" style="width:50%; height:auto;" />
+
+**After Edge Detection**    
+<img src="screenshots/ganpati_edge.jpg" alt="Output" style="width:50%; height:auto;" />
 
 
 
 
-**Before Edge Detection**
-![App Screenshot](screenshots/bag_original.jpg)
-**After Edge Detection**
-![App Screenshot](screenshots/bag_edge.jpg)
+**Before Edge Detection**     
+<img src="screenshots/bag_original.jpg" alt="Output" style="width:50%; height:auto;"/>
+
+**After Edge Detection**    
+<img src="screenshots/bag_edge.jpg" alt="Output" style="width:50%; height:auto;" />
+
 
 Few More screenshots are present at ```./screenshots```
 
