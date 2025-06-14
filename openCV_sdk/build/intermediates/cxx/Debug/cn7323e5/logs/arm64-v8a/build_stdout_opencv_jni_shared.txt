@@ -1,0 +1,2 @@
+ninja: Entering directory `/Users/bhavesh/AndroidStudioProjects/EdgeDetectionApp4/openCV_sdk/.cxx/Debug/cn7323e5/arm64-v8a'
+ninja: no work to do.
