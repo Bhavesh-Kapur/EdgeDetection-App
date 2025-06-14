@@ -22,6 +22,7 @@ import android.os.HandlerThread;
 import android.util.Log;
 import android.view.Surface;
 import android.view.TextureView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView fpsText;
     private int frameCount = 0;
     private long lastTime = 0;
+    private boolean isEdgeDetectionOn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +76,28 @@ public class MainActivity extends AppCompatActivity {
         fpsText = findViewById(R.id.fpsText);
         lastTime = System.currentTimeMillis();
 
-    }
+//        Button toggleButton = findViewById(R.id.toggleEdgeButton);
+//        toggleButton.setOnClickListener(v -> {
+//            isEdgeDetectionOn = !isEdgeDetectionOn;
+//            if (isEdgeDetectionOn) {
+//                toggleButton.setText("Turn Off Edge Detection");
+//                // start edge detection processing
+//            } else {
+//                toggleButton.setText("Turn On Edge Detection");
+//                // stop edge detection, show raw camera
+//            }
+//        });
+//
+//        // Initialize the button text:
+//        toggleButton.setText("Turn Off Edge Detection");
+//    }
 
+        Button toggleButton = findViewById(R.id.toggleEdgeButton);
+        toggleButton.setOnClickListener(v -> {
+            isEdgeDetectionOn = !isEdgeDetectionOn;
+            toggleButton.setText(isEdgeDetectionOn ? "Turn Off Edge Detection" : "Turn On Edge Detection");
+        });
+    }
     private final TextureView.SurfaceTextureListener textureListener = new TextureView.SurfaceTextureListener() {
         @Override public void onSurfaceTextureAvailable(SurfaceTexture surface, int width, int height) {
             openCamera();
@@ -84,28 +106,12 @@ public class MainActivity extends AppCompatActivity {
         @Override public void onSurfaceTextureSizeChanged(SurfaceTexture surface, int width, int height) {}
         @Override public boolean onSurfaceTextureDestroyed(SurfaceTexture surface) { return false; }
         @Override public void onSurfaceTextureUpdated(SurfaceTexture surface) {
-//            Bitmap bitmap = textureView.getBitmap();
-//            Mat mat = new Mat();
-//            Utils.bitmapToMat(bitmap, mat);
-//            Imgproc.cvtColor(mat, mat, Imgproc.COLOR_RGBA2GRAY);
-//            processFrameNative(mat.getNativeObjAddr());
-//            Utils.matToBitmap(mat, bitmap);
-//            runOnUiThread(() -> textureView.getCanvas().drawBitmap(bitmap, 0, 0, null));
-//            Bitmap bitmap = textureView.getBitmap();
-//            Mat mat = new Mat();
-//            Utils.bitmapToMat(bitmap, mat);
-//            Imgproc.cvtColor(mat, mat, Imgproc.COLOR_RGBA2GRAY);
-//            processFrameNative(mat.getNativeObjAddr());
-//            Bitmap resultBitmap = Bitmap.createBitmap(mat.cols(), mat.rows(), Bitmap.Config.ARGB_8888);
-//            Utils.matToBitmap(mat, resultBitmap);
-//            runOnUiThread(() -> glRenderer.updateBitmap(resultBitmap);
-//            glView.requestRender(););
-
             Bitmap bitmap = textureView.getBitmap();
             Mat mat = new Mat();
             Utils.bitmapToMat(bitmap, mat);
-            Imgproc.cvtColor(mat, mat, Imgproc.COLOR_RGBA2GRAY);
-            processFrameNative(mat.getNativeObjAddr());
+            if(isEdgeDetectionOn){Imgproc.cvtColor(mat, mat, Imgproc.COLOR_RGBA2GRAY);
+                processFrameNative(mat.getNativeObjAddr());}
+
             Bitmap resultBitmap = Bitmap.createBitmap(mat.cols(), mat.rows(), Bitmap.Config.ARGB_8888);
             Utils.matToBitmap(mat, resultBitmap);
             runOnUiThread(() -> {

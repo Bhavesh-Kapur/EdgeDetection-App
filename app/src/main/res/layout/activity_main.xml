@@ -25,13 +25,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
-        android:layout_marginTop="50dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="30dp"
         android:background="#000000"
-        android:padding="20dp"
+        android:padding="10dp"
         android:text="FPS: 0"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:visibility="visible" />
+
+    <Button
+        android:id="@+id/toggleEdgeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:text="Toggle Off Edge Detection" />
 </FrameLayout>
 
